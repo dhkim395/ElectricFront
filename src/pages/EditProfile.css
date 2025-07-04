@@ -1,0 +1,210 @@
+.edit-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background-color: #e6f7ff;
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+.edit-container h2 {
+  font-size: 1.8rem;
+  color: #0078c8;
+  margin-bottom: 24px;
+  font-weight: 800;
+}
+
+.info-box {
+  background-color: #fff;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 20px;
+  text-align: left;
+  box-shadow: inset 0 0 5px rgba(0, 174, 255, 0.1);
+}
+
+.input-box {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.edit-container .top-link {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.input-box label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #aee0f9;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.input-box input:focus {
+  border-color: #00bbff;
+  background-color: #f0fcff;
+}
+
+/* 버튼 스타일 */
+.btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn.primary {
+  background-color: #00c2ff;
+  color: white;
+}
+
+.btn.primary:hover {
+  background-color: #00a3d4;
+}
+
+.btn.secondary {
+  background-color: #ffffff;
+  color: #00a3d4;
+  border: 2px solid #00a3d4;
+}
+
+.btn.secondary:hover {
+  background-color: #e6faff;
+}
+
+.message {
+  font-size: 0.95rem;
+  color: #ff4d4d;
+  margin-top: 12px;
+}
+
+/* 반응형 */
+@media (max-width: 500px) {
+  .edit-container {
+    margin: 40px 16px;
+    padding: 30px 20px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/*로딩 중*/
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #e6f7ff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  color: #0078c8;
+}
+
+.seal-wrapper {
+  position: relative;
+  display: inline-block;
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+.swimming-seal-img {
+  width: 130px;
+  animation: swim 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(0, 194, 255, 0.4));
+}
+
+@keyframes swim {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(10px) rotate(2deg);
+  }
+  50% {
+    transform: translateX(20px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(10px) rotate(1deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.loading-text {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #0078c8;
+}
+
+/* 버블 효과 */
+.bubble {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #aeefff;
+  left: 100%;
+  top: 20%;
+  animation: bubbleFloat 2s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.bubble.small {
+  width: 8px;
+  height: 8px;
+  top: 30%;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-20px, -20px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-40px, -40px) scale(1);
+    opacity: 0;
+  }
+}

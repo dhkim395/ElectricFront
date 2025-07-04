@@ -1,0 +1,298 @@
+/* 컨테이너 */
+.mypage-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background-color: #e6f7ff;
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* 상단 뒤로가기 */
+.top-link {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.home-icon {
+  font-size: 22px;
+  color: #007acc;
+}
+
+/* 제목 */
+h2 {
+  text-align: center;
+  font-size: 1.9rem;
+  color: #0078c8;
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+/* 회원정보 박스 */
+.info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 3px 8px rgba(0, 174, 255, 0.1);
+}
+
+.info-text {
+  flex-grow: 1;
+}
+
+.info-text p {
+  margin: 8px 0;
+  font-size: 1rem;
+  color: #333;
+}
+
+.edit-btn {
+  padding: 8px 14px;
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* 예쁜 구분선 */
+hr {
+  border: none;
+  height: 1px;
+  background-color: #cdeaf8;
+  margin: 30px 0;
+}
+
+/* 섹션 타이틀 */
+h3 {
+  margin-bottom: 16px;
+  color: #007acc;
+  font-size: 1.2rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* 차량 등록 박스 */
+.car-box {
+  margin: 0 auto 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #bbb;
+  border-radius: 14px;
+  padding: 18px 14px;
+  width: 100%;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color: #fdfdfd;
+  transition: border-color 0.2s;
+}
+
+.car-box:hover {
+  border-color: #00bfff;
+}
+
+.car-image {
+  width: 56px;
+  height: 56px;
+  background-image: url("/car-placeholder.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 12px;
+}
+
+.car-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* 로그아웃 버튼 */
+.logout-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+  background-color: #00a3d4;
+}
+
+/* 메시지 */
+.message {
+  font-size: 0.95rem;
+  color: #ff4d4d;
+  margin-top: 10px;
+}
+
+/* 반응형 */
+@media (max-width: 500px) {
+  .mypage-container {
+    margin: 40px 12px;
+    padding: 24px 16px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .info-box {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+
+  .edit-btn {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+    white-space: nowrap;
+  }
+
+  .car-box {
+    flex-direction: column;
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .car-image {
+    width: 48px;
+    height: 48px;
+    margin-right: 0;
+  }
+
+  .car-text {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .logout-btn {
+    font-size: 0.95rem;
+    padding: 14px;
+  }
+}
+
+/*로딩 중*/
+.loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #e6f7ff;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  color: #0078c8;
+}
+
+.seal-wrapper {
+  position: relative;
+  display: inline-block;
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
+.swimming-seal-img {
+  width: 130px;
+  animation: swim 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(0, 194, 255, 0.4));
+}
+
+@keyframes swim {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(10px) rotate(2deg);
+  }
+  50% {
+    transform: translateX(20px) rotate(-2deg);
+  }
+  75% {
+    transform: translateX(10px) rotate(1deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.loading-text {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 1.05rem;
+  color: #0078c8;
+}
+
+/* 버블 효과 */
+.bubble {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #aeefff;
+  left: 100%;
+  top: 20%;
+  animation: bubbleFloat 2s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+.bubble.small {
+  width: 8px;
+  height: 8px;
+  top: 30%;
+  animation-duration: 3s;
+  animation-delay: 0.5s;
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-20px, -20px) scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-40px, -40px) scale(1);
+    opacity: 0;
+  }
+}
+
+/*삭제 버튼*/
+.delete-car-btn {
+  margin-left: auto;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 14px;
+}

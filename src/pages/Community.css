@@ -1,0 +1,121 @@
+.community-page {
+  max-width: 480px;
+  margin: 0 auto;
+  font-family: "Segoe UI", sans-serif;
+  background-color: white;
+  padding-bottom: 100px;
+}
+
+/* 상단 헤더 */
+.community-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+.back-icon,
+.search-icon {
+  font-size: 20px;
+  color: #222;
+  cursor: pointer;
+}
+
+.community-title {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* 배너 */
+.banner {
+  margin: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.banner img {
+  width: 100%;
+  display: block;
+}
+
+/* 탭 버튼 */
+.community-tabs {
+  display: flex;
+  padding: 0 16px;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.tab {
+  background: #eee;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  color: #333;
+}
+.tab.active {
+  background: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+/* 게시글 카드 */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 16px;
+}
+.post-card {
+  display: flex;
+  gap: 12px;
+}
+.profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+.post-content {
+  flex: 1;
+}
+.post-author-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  color: #666;
+}
+.post-title {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 6px 0;
+  color: #222;
+  text-align: left;
+}
+.post-comment {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 글쓰기 버튼 */
+.write-button {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: white;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}

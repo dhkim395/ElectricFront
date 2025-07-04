@@ -1,0 +1,105 @@
+.car-register-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background-color: #e6f7ff;
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+.car-register-container h2 {
+  font-size: 1.8rem;
+  color: #0078c8;
+  margin-bottom: 32px;
+  font-weight: 800;
+}
+
+.input-box {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.input-box label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.input-box input,
+.input-box select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 2px solid #aee0f9;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  outline: none;
+  background-color: white;
+  transition: 0.2s;
+}
+
+.input-box input:focus,
+.input-box select:focus {
+  border-color: #00bbff;
+  background-color: #f0fcff;
+}
+
+.connector-box {
+  margin: 30px 0;
+  text-align: left;
+  background-color: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: inset 0 0 5px rgba(0, 174, 255, 0.1);
+}
+
+.connector-box h4 {
+  margin-bottom: 10px;
+  color: #007acc;
+  font-size: 1.1rem;
+}
+
+.connector-box ul {
+  list-style: none;
+  padding-left: 0;
+  font-size: 0.95rem;
+}
+
+.connector-box li {
+  margin-bottom: 6px;
+}
+
+/* 버튼 스타일 */
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #00a3d4;
+}
+
+/* 반응형 */
+@media (max-width: 500px) {
+  .car-register-container {
+    margin: 40px 16px;
+    padding: 30px 20px;
+  }
+
+  .submit-btn {
+    padding: 14px;
+    font-size: 1rem;
+  }
+}

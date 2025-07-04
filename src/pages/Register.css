@@ -1,0 +1,137 @@
+body {
+  margin: 0;
+  background-color: #f0fbff; /* 물개 스타일 배경 */
+  font-family: "Segoe UI", sans-serif;
+}
+
+.register-container {
+  max-width: 420px;
+  margin: 80px auto;
+  background-color: #e6f7ff;
+  border-radius: 30px;
+  padding: 40px 30px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.register-container h2 {
+  margin-bottom: 24px;
+  font-size: 1.9rem;
+  color: #0078c8;
+  font-weight: 800;
+}
+
+.register-container p {
+  margin-bottom: 18px;
+  font-size: 1rem;
+  text-align: left;
+  color: #333;
+}
+
+.register-container input {
+  display: block;
+  width: 100%;
+  padding: 14px 18px;
+  border: 2px solid #aee0f9;
+  border-radius: 14px;
+  font-size: 1rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.2s;
+  margin-top: 6px;
+  background-color: white;
+}
+
+.register-container input:focus {
+  border-color: #00bbff;
+  background-color: #f0fcff;
+}
+
+.register-container button {
+  width: 100%;
+  padding: 16px;
+  background-color: #00c2ff;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.05rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s, transform 0.1s;
+}
+
+.register-container button:hover {
+  background-color: #00a3d4;
+  transform: translateY(-1px);
+}
+
+.register-container a {
+  color: #007acc;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.register-container a:hover {
+  text-decoration: underline;
+}
+
+.register-container .message {
+  font-size: 0.95rem;
+  margin-top: 12px;
+  color: #ff4d4d;
+}
+
+.register-container .top-link {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.register-container .home-icon {
+  font-size: 22px;
+  color: #007acc;
+}
+
+.bottom-link {
+  margin-top: 30px;
+  font-size: 0.95rem;
+  text-align: center;
+  color: #444;
+}
+
+.bottom-link a {
+  font-weight: bold;
+  color: #007acc;
+  text-decoration: none;
+}
+
+.bottom-link a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ 반응형 디자인 개선 */
+@media (max-width: 500px) {
+  .register-container {
+    margin: 40px 16px;
+    padding: 30px 20px;
+  }
+
+  .register-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .register-container input {
+    padding: 12px 14px;
+    font-size: 0.95rem;
+  }
+
+  .register-container button {
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  .bottom-link {
+    font-size: 0.9rem;
+  }
+}

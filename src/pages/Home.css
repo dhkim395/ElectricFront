@@ -1,0 +1,1039 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&family=Do+Hyeon&display=swap");
+
+.filter-button {
+  padding: 8px 12px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  writing-mode: horizontal-tb;
+}
+
+/* 패널은 버튼 바로 아래 */
+.filter-panel {
+  position: fixed;
+  top: 112px; /* 검색창+필터바 높이만큼 내려오게 조정 */
+  left: 16px; /* 버튼 위치에 맞게 조정 */
+  z-index: 999;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 16px;
+  min-width: 280px;
+}
+
+.filter-panel label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+#map_div {
+  position: relative;
+  z-index: 0;
+}
+
+.map-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+/* 자동완성 입력 전체 wrapper */
+/* === 공통 검색 컨테이너 === */
+.search-fixed-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #eee;
+}
+
+/* === Autocomplete Wrapper === */
+.autocomplete-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 120px;
+}
+
+.autocomplete-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ccc;
+  z-index: 99;
+  position: relative;
+}
+/* 라벨 스타일 */
+
+.autocomplete-label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 13.5px;
+  color: #333;
+}
+
+/* === Input 스타일 === */
+.autocomplete-input {
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: border-color 0.2s ease;
+}
+
+.autocomplete-input:focus {
+  border-color: #007aff;
+  background-color: #fff;
+}
+
+/* === 자동완성 리스트 === */
+.autocomplete-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 2000;
+}
+
+/* === 자동완성 항목 === */
+.autocomplete-item {
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.autocomplete-item:hover {
+  background-color: #f7f7f7;
+}
+
+/* === 스왑 버튼 === */
+.swap-button {
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 50%;
+  font-size: 18px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.swap-button:hover {
+  background-color: #ddd;
+}
+
+/* inline 필터 바 */
+/* 전체 필터 바 */
+.inline-filter-bar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  width: 100vw;
+  z-index: 101;
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  border-radius: 12px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 8px 0 8px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 필터 버튼 */
+.inline-filter-bar button {
+  background: #fff;
+  color: #0077aa;
+  border: 2px solid #88d4f2;
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+}
+
+.inline-filter-bar button:hover {
+  background: #c2f0ff;
+  transform: scale(1.05);
+}
+
+/* 드롭다운 공통 */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px;
+  background: #ffffff;
+  border: 2px solid #aee4ff;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 50, 100, 0.15);
+  z-index: 1000;
+  animation: fadeIn 0.25s ease-in-out;
+  max-height: 300px;
+  overflow-y: auto;
+  min-width: 200px;
+}
+
+/* 충전속도 드롭다운 */
+.speed-dropdown select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 0 4px;
+}
+
+/* 충전타입 드롭다운 */
+.type-dropdown label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.type-dropdown input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* 사업자 드롭다운 */
+.provider-dropdown label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.provider-dropdown input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 스위치 토글 스타일 */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.2s;
+  border-radius: 24px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4caf50;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+/* ======================= 햄버거 버튼 ======================= */
+
+.hamburger-button {
+  margin-right: 10px;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: #222;
+  display: flex;
+  align-items: center;
+}
+
+/* ======================= 사이드 드로어 ======================= */
+
+.side-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 100vh;
+  background: #f5f5f5;
+  padding: 16px 0;
+  z-index: 1100;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* === 상단 프로필 영역 (1열) === */
+.drawer-top-row {
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* 귀여운 둥근 프로필 이미지 */
+.profile-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #b2e0ff;
+  background-color: #e6f7ff;
+}
+
+/* 로그인 링크 영역 */
+.login-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+/* ✅ 이름 + 로그아웃 버튼 수평 정렬용 */
+.user-info-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 사용자 이름 말풍선 스타일 */
+.user-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555555;
+  background-color: #f2f2f2;
+  padding: 4px 10px;
+  border-radius: 10px;
+}
+
+/* 로그아웃 버튼 */
+.logout-button {
+  background: none;
+  border: none;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.logout-button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #444;
+}
+
+/* 회원가입 | 로그인 버튼을 가로 정렬 */
+.login-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 로그인 & 회원가입 버튼 */
+.login-button {
+  background: #f2f2f2; /* 밝은 회색 배경 */
+  border: none;
+  color: #555555; /* 글자색: 차콜 그레이 */
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.login-button:hover {
+  background: #e0e0e0; /* 호버 시 약간 진한 회색 */
+}
+
+/* 로그인/회원가입 구분선 */
+.divider {
+  color: #aaa; /* 중간 회색 */
+  margin: 0 6px;
+}
+
+/* === 인사말 메시지 (회색 스타일) === */
+.drawer-welcome {
+  background: linear-gradient(135deg, #f2f2f2, #e0e0e0); /* 연회색 그라데이션 */
+  margin: 8px 16px 20px;
+  padding: 10px 14px;
+  border-left: 4px solid #b0b0b0; /* 강조선도 회색 */
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #555555; /* 텍스트 색상도 회색 */
+  font-weight: 500;
+  word-break: keep-all;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 회색 그림자 */
+}
+
+/* === 하단 전체 구조: 2열 === */
+.drawer-body {
+  display: flex;
+  flex-direction: row;
+  height: calc(100% - 120px); /* 상단 영역 제외 */
+  box-sizing: border-box;
+}
+
+/* 왼쪽 아이콘 열 */
+.icon-column {
+  width: 64px;
+  background: #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 20px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.icon-column div {
+  padding: 18px 0;
+  cursor: pointer;
+}
+
+.menu-icon {
+  font-size: 24px;
+  color: #444;
+  transition: transform 0.2s ease;
+}
+
+.active-icon {
+  color: #0078c8;
+  transform: scale(1.1);
+}
+
+/* 오른쪽 텍스트 열 */
+.text-column {
+  flex: 1;
+  background: white;
+  overflow-y: auto;
+  height: 100%;
+  box-sizing: border-box;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.text-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-item {
+  padding: 12px 0; /* 위아래 간격 */
+  font-size: 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  text-decoration: none; /* 밑줄 제거 */
+  color: inherit; /* 링크 색상 부모로부터 상속 (선택) */
+}
+
+.text-item:last-child {
+  border-bottom: none;
+}
+
+.text-item:hover {
+  color: #1976d2;
+  font-weight: 500;
+}
+
+/* 🔵 충전소 정보 패널 개선 스타일 */
+.drag-handle {
+  width: 50px;
+  height: 6px;
+  background: #ccc;
+  border-radius: 3px;
+  margin: 0px auto 13px auto;
+  cursor: grab;
+  transition: background 0.2s;
+}
+
+.drag-handle:hover {
+  background: #999;
+}
+
+.station-info-panel {
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
+  color: #033b86;
+  padding: 24px 20px;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 70, 160, 0.15);
+  background: linear-gradient(to bottom, #e8f3ff, #f6fbff);
+  font-size: 15px;
+  font-weight: 400;
+  text-align: center;
+  animation: fadeUp 0.4s ease-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.station-info-panel p {
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+/* 제목 (충전소명) 강조 + 아이콘 */
+.station-info-panel p:first-of-type {
+  font-size: 20px;
+  font-weight: 800;
+  color: #002f6c;
+}
+.station-info-panel p:first-of-type::before {
+  content: "⚡ ";
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* 사업자명 */
+.station-info-panel p:nth-of-type(2) {
+  font-weight: 600;
+  color: #1a56b3;
+  font-size: 15px;
+}
+
+/* 주소 */
+.station-info-panel p:nth-of-type(3) {
+  font-size: 14px;
+  color: #445b82;
+}
+
+/* ID 정보 */
+.station-info-panel p:nth-of-type(4),
+.station-info-panel p:nth-of-type(5) {
+  font-size: 13px;
+  color: #7885a2;
+}
+
+/* 버튼 스타일 */
+.station-info-buttons button,
+.station-info-panel button {
+  background: linear-gradient(135deg, #3faaff, #036eea);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  margin: 10px 8px 0 8px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 98, 192, 0.3);
+  font-family: "Noto Sans KR", "NanumSquareRound", sans-serif;
+
+  animation: floatPulse 2.5s ease-in-out infinite;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+/* Hover 시 bounce 느낌 */
+.station-info-buttons button:hover,
+.station-info-panel button:hover {
+  background: linear-gradient(135deg, #036eea, #024ca8);
+  animation: bounce 0.4s ease;
+  transform: scale(1.05);
+}
+
+/* 패널 부드럽게 등장 */
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 클릭감 bounce 효과 */
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/* 충전기 카드 리스트 (가로 스크롤) */
+.station-info-panel ul {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  gap: 14px;
+  padding: 12px 10px;
+  white-space: nowrap;
+  scroll-snap-type: x mandatory;
+}
+
+/* 카드 1개 */
+.station-info-panel li {
+  flex: 0 0 auto;
+  min-width: 220px;
+  max-width: 240px;
+  background: linear-gradient(
+    135deg,
+    #e8f6ff,
+    #f9fcff
+  ); /* ✅ 귀여운 배경 잘 적용됨 */
+  border: 2px dashed #a5d9f9;
+  border-radius: 24px;
+  padding: 16px 18px;
+  font-size: 14.5px;
+  scroll-snap-align: start;
+  box-shadow: 0 6px 12px rgba(100, 180, 250, 0.15);
+  color: #034f85;
+  position: relative;
+  font-family: "Nanum Pen Script", "Noto Sans KR", sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  transition: transform 0.2s ease;
+}
+
+.station-info-panel li:hover {
+  transform: scale(1.03);
+}
+
+/* ✅ 🔽 타입 줄바꿈 안 되는 문제 해결용 설정 */
+.station-info-panel li .value {
+  word-break: keep-all; /* 한글 자연스럽게 줄바꿈 */
+  overflow-wrap: anywhere; /* + 같은 기호 뒤에서도 줄바꿈 허용 */
+  white-space: normal; /* 줄바꿈 허용 */
+  line-height: 1.5;
+  color: #06559d;
+  font-weight: 500; /* ✅ 숫자 가독성 향상 (기존 normal → 500) */
+}
+
+/* 라벨 */
+.station-info-panel .label {
+  font-weight: bold;
+  color: #003a6c;
+  display: inline-block;
+  min-width: 92px;
+}
+
+/* 상태 뱃지 */
+.station-info-panel .status {
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 13.5px;
+  font-weight: bold;
+  border-radius: 20px;
+  background: #eee;
+  color: #555;
+  align-self: flex-start;
+  margin-bottom: 6px;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 상태별 컬러 */
+.station-info-panel .status.active {
+  background: #d7ffec;
+  color: #1976d2;
+  box-shadow: 0 2px 4px rgba(0, 160, 100, 0.15);
+}
+
+.station-info-panel .status.charging {
+  background: #ffe6f0;
+  color: #d73567;
+  box-shadow: 0 2px 4px rgba(220, 80, 120, 0.15);
+}
+
+/* 스크롤바 */
+.station-info-panel ul::-webkit-scrollbar {
+  height: 8px;
+}
+.station-info-panel ul::-webkit-scrollbar-thumb {
+  background: #a8d8f9;
+  border-radius: 6px;
+}
+.station-info-panel ul::-webkit-scrollbar-track {
+  background: #ecf8ff;
+}
+
+/* 라벨/값 한 줄 세트 */
+.station-info-panel li .row {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+/* 리스트 보기 아이콘 */
+.seal-button {
+  position: absolute;
+  right: 24px;
+  bottom: 235px;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 4px 18px rgba(25, 118, 210, 0.18);
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  min-height: 56px;
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.18s, box-shadow 0.18s, color 0.18s, transform 0.13s;
+  outline: none;
+  user-select: none;
+}
+
+.seal-button .emoji {
+  display: none;
+}
+
+.seal-button .book-icon {
+  width: 28px;
+  height: 28px;
+  display: block;
+  margin: 0 auto;
+  fill: #fff;
+}
+
+.seal-button:hover,
+.seal-button:active {
+  background: #1251a8;
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(25, 118, 210, 0.22);
+  transform: translateY(-2px) scale(1.06);
+}
+
+@media (max-width: 600px) {
+  .seal-button {
+    right: 12px;
+    bottom: 235px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 18px;
+  }
+  .seal-button .book-icon {
+    width: 22px;
+    height: 22px;
+  }
+}
+
+/* 현위치 */
+.current-location-button {
+  position: absolute;
+  bottom: 165px;
+  right: 12px;
+  z-index: 999;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid #1976d2;
+  background-color: #ffffff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 20px;
+  color: #1976d2;
+
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.current-location-button:hover {
+  background-color: #ecfaf3;
+  transform: scale(1.08);
+}
+
+html,
+body,
+#root,
+.map-container,
+#map_div {
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: initial;
+}
+
+.home-map-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  z-index: 1;
+  background: #fff;
+}
+
+.member-company-selector {
+  position: fixed;
+  top: 170px; /* seal-button 하단+여백 */
+  right: 18px;
+  z-index: 101;
+}
+
+.dropdown.speed-dropdown,
+.dropdown.type-dropdown {
+  position: fixed;
+  top: 112px; /* 검색창+필터바 높이만큼 내려오게 조정 */
+  left: 16px; /* 버튼 위치에 맞게 조정, 필요시 JS로 동적 조정 가능 */
+  z-index: 999;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 12px 16px;
+  min-width: 180px;
+}
+
+.dropdown.member-company-dropdown {
+  position: fixed;
+  top: 112px;
+  left: 180px;
+  z-index: 2000;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  min-width: 180px;
+  display: block;
+  visibility: visible;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.dropdown-search {
+  width: 90%;
+  margin: 8px 5%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.dropdown-options-list {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.bottom-floating-bar {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  width: 92vw;
+  max-width: 420px;
+  min-width: 220px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 12px 0;
+  z-index: 1200;
+}
+
+.bottom-bar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.05rem;
+  color: #222;
+  cursor: pointer;
+  flex: 1;
+}
+
+.bar-icon {
+  font-size: 1.5rem;
+  margin-bottom: 2px;
+  color: #222;
+}
+
+/* 로딩중 물개 - 운전 스타일 */
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #d1f2ff, #ffffff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 5000;
+  text-align: center;
+  font-family: "Jua", sans-serif;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.seal-icon {
+  width: 150px;
+  height: auto;
+  animation: drive 2.4s ease-in-out infinite;
+  margin-bottom: 20px;
+}
+
+.splash-title {
+  font-family: "Jua", sans-serif !important;
+  font-size: 2.6rem;
+  font-weight: bold;
+  margin: 0;
+  animation: bounce 1.6s ease-in-out infinite;
+  color: #0077cc;
+}
+
+.splash-subtitle {
+  font-size: 1.2rem;
+  color: #333;
+  margin-top: 12px;
+  opacity: 0.9;
+}
+
+/* 등장 애니메이션 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 물개 운전 애니메이션 */
+@keyframes drive {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  20% {
+    transform: translateX(6px) rotate(1.5deg);
+  }
+  50% {
+    transform: translateX(0px) rotate(0deg);
+  }
+  80% {
+    transform: translateX(-6px) rotate(-1.5deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+/* 제목 bounce */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
