@@ -1,9 +1,8 @@
 # ⚡ Chaji Frontend
 
 <p align="center">
-  <img src="./img/567e4bf9-ac5f-49f2-860c-91f39ee19528.png" alt="Chaji Logo" width="250"/>
+  <img src="./img/seal-driver.png" alt="Chaji Logo" width="250"/>
 </p>
-
 ---
 
 ## 📌 프로젝트 정보
